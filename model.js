@@ -6,6 +6,10 @@ function Drawing(){
     this.arrayShapes = []
 }
 
+Drawing.prototype.getForms = function(){
+    return this.arrayShapes;
+}
+
 function Shape (epTrait,color,posStartx,posStarty){
     this.epTrait = epTrait
     this.color = color
@@ -19,7 +23,6 @@ function Shape (epTrait,color,posStartx,posStarty){
 
 
 function Rectangle(posStartx, posStarty,larg,haut,ep,color){
-    
     Shape.call(this,ep,color,posStartx,posStarty)
     this.posFinalx = larg
     this.posFinaly = haut

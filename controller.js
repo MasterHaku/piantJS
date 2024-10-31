@@ -15,20 +15,29 @@ function Pencil(ctx, drawing, canvas) {
 };
 
 
-Pencil.prototype.onInteractionStart=function(dnd){
-	console.log("start")
-	
-
-}
-
-Pencil.prototype.onInteractionEnd=function(){
-	
-}
-Pencil.prototype.onInteractionUpdate=function(){
-	if(document.getElementById('butRect').checked){
-		this.currentShape = new Rectangle(dnd.posInitx,dnd.posInity,dnd.posFinalx,dnd.posFinaly,this.currLineWidth, this.currColour)
-	}else if(document.getElementById('butLine').checked){
-		this.currentShape = new Line(dnd.posInitx,dnd.posInity,dnd.posFinalx,dnd.posFinaly,this.currLineWidth, this.currColour)
+Pencil.prototype.onInteractionStart = function (dnd) {
+	if (document.getElementById('butRect').checked) {
+		this.currentShape = new Rectangle(dnd.posInitx, dnd.posInity, dnd.posFinalx-dnd.posInitx, dnd.posFinaly-dnd.posInity, this.currLineWidth, this.currColour)
+	} else if (document.getElementById('butLine').checked) {
+		this.currentShape = new Line(dnd.posInitx, dnd.posInity, dnd.posFinalx-dnd.posInitx, dnd.posFinaly-dnd.posInity, this.currLineWidth, this.currColour)
 	}
+	drawing.paint(ctx,canvas)
+	this.currentShape.paint(this.ctx)
 }
 
+
+Pencil.prototype.onInteractionUpdate = function (dnd) {
+	if (document.getElementById('butRect').checked) {
+		this.currentShape = new Rectangle(dnd.posInitx, dnd.posInity, dnd.posFinalx-dnd.posInitx, dnd.posFinaly-dnd.posInity, this.currLineWidth, this.currColour)
+	} else if (document.getElementById('butLine').checked) {
+		this.currentShape = new Line(dnd.posInitx, dnd.posInity, dnd.posFinalx-dnd.posInitx, dnd.posFinaly-dnd.posInity, this.currLineWidth, this.currColour)
+	}
+	drawing.paint(ctx,canvas)
+	this.currentShape.paint(this.ctx)
+}
+
+Pencil.prototype.onInteractionEnd = function (dnd) {
+	drawing.shapeArray.push(this.currentShape)
+	drawing.paint(ctx,canvas)
+	this.currentShape.paint(this.ctx)
+}
