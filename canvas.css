@@ -1,7 +1,5 @@
 
-.myCanvas {
 
-}
 
 .cf:before,.cf:after{content:"";display:table}.cf:after{clear:both}.cf{zoom:1}
 
@@ -107,3 +105,16 @@ form {
   border-bottom-right-radius: 4px;
 }
 
+
+
+.shape-item {
+    display: flex;
+    justify-content: space-between; /* Espace entre le nom et le bouton */
+    align-items: center; /* Aligne verticalement le contenu */
+    margin-bottom: 2px; /* Espacement entre les éléments de la liste */
+}
+
+.shape-name {
+    flex-grow: 1; /* Prend tout l'espace disponible */
+    margin-right: 2px; /* Réduire l'espace entre le nom et le bouton */
+}

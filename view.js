@@ -35,5 +35,25 @@ Shape.prototype.paint = function (ctx) {
     console.error(this.color)
     //ctx.strokeStyle = this.color
     //ctx.width = this.epTrait
-}.bind(this);
+}
+
+
+function updateShapeMap(id, shape) {
+    const shapeList = document.getElementById('shapeList');
+
+    // Créer un élément de liste pour chaque forme
+    const li = document.createElement('li');
+    li.id = `shape-${id}`;
+    li.innerHTML = `
+        <span>${shape instanceof Rectangle ? 'Rectangle' : 'Line'} - ID: ${id}</span>
+        <button id="remove${id}" class="btn btn-danger btn-sm">Supprimer</button>
+    `;
+
+    // Ajouter l'élément de liste à la liste de formes
+    shapeList.appendChild(li);
+
+    // Ajouter un gestionnaire d'événement pour le bouton de suppression
+    document.getElementById(`remove${id}`).onclick = (e) => removeShape(id, shapeList);
+}
+
 

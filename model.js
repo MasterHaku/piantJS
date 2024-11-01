@@ -3,11 +3,15 @@
 // N'oubliez pas l'héritage !
 
 function Drawing(){
-    this.arrayShapes = []
+    this.arrayShapes = new Map();
 }
 
 Drawing.prototype.getForms = function(){
     return this.arrayShapes;
+}
+
+Drawing.prototype.addShape = function(id,shape){
+    this.arrayShapes.set(id,shape);
 }
 
 function Shape (epTrait,color,posStartx,posStarty){
@@ -15,6 +19,7 @@ function Shape (epTrait,color,posStartx,posStarty){
     this.color = color
     this.posStartx = posStartx
     this.posStarty = posStarty
+    this.name=""
     console.log("colortest", this.color)
     console.log("trait", this.epTrait
     )
@@ -26,6 +31,7 @@ function Rectangle(posStartx, posStarty,larg,haut,ep,color){
     Shape.call(this,ep,color,posStartx,posStarty)
     this.posFinalx = larg
     this.posFinaly = haut
+    this.name="Rectangle"
 }
 Rectangle.prototype = new Shape()
 
@@ -51,6 +57,7 @@ function Line(posStartx, posStarty,posFinalx, posFinaly,ep, color){
     Shape.call(this,ep,color,posStartx,posStarty)
     this.posFinx = posFinalx
     this.posFiny = posFinaly
+    this.name="Ligne"
 };
 Line.prototype = new Shape()
 Line.prototype.getInitX=function(){
