@@ -107,14 +107,15 @@ form {
 
 
 
+/* Classes pour l'affichage */
 .shape-item {
     display: flex;
-    justify-content: space-between; /* Espace entre le nom et le bouton */
-    align-items: center; /* Aligne verticalement le contenu */
-    margin-bottom: 2px; /* Espacement entre les éléments de la liste */
+    justify-content: space-between; 
+    align-items: center;
+    margin-bottom: 2px; 
 }
 
 .shape-name {
-    flex-grow: 1; /* Prend tout l'espace disponible */
-    margin-right: 2px; /* Réduire l'espace entre le nom et le bouton */
+    flex-grow: 1;
+    margin-right: 2px; 
 }
